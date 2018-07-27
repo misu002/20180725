@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import member.Message;
+import BeanModel.Message;
 import jdbc.JdbcUtil;
 
 public class MessageDao {
@@ -18,15 +18,10 @@ public class MessageDao {
 	// 따라서 싱글톤으로 구현
 
 	// 1.생성자를 은닉
-	private MessageDao() {
-	}
+
 
 	// 2.인스턴스 생성 : 1개 생성하고 공유할것
-	private static MessageDao instance = new MessageDao();
 
-	public static MessageDao getInstance() { // protected사용가능 ???????
-		return instance;
-	}
 
 	public int insert(Connection conn, Message message) throws SQLException {
 		PreparedStatement pstmt = null;

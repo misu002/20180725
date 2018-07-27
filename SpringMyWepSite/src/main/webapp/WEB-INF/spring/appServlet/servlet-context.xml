@@ -25,6 +25,9 @@
 	
 	<context:component-scan base-package="com.bitcamp.mywebsite" />
 	
-	
-	
+	<!-- 로그인 서비스 등록 -->
+	<beans:bean id="GetIdService" class="Services.GetIdService"/>
+	<beans:bean id="userinfoDao" class="DAO.userinfoDao"></beans:bean>
+	<beans:bean id="MessageDao" class="DAO.MessageDao"></beans:bean>
+	<beans:bean id="RegisterInsertService" class="Services.RegisterInsertService"></beans:bean>
 </beans:beans>

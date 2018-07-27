@@ -5,22 +5,18 @@ import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import DAO.MessageDao;
-import member.Message;
-import member.MessageListView;
+import BeanModel.Message;
+import BeanModel.MessageListView;
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
 
 public class GetMessageListService {
+	@Autowired
+	MessageDao messageDao;
 
-	private static GetMessageListService instance = new GetMessageListService();
-
-	public static GetMessageListService getInstance() {
-		return instance;
-	}
-
-	private GetMessageListService() {
-	}
 
 	// 한 페이지에 보여줄 메시지의 수
 	private static final int MESSAGE_COUNT_PER_PAGE = 3;
@@ -36,7 +32,6 @@ public class GetMessageListService {
 		
 		try {
 		conn = ConnectionProvider.getConnection();
-		MessageDao messageDao = MessageDao.getInstance();
 		//전체 게시물 구하기
 		int messageTotalCount = messageDao.selectCount(conn);
 		List<Message> messageList = null;

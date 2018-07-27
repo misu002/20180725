@@ -16,17 +16,6 @@ import jdbc.JdbcUtil;
 import BeanModel.userinfo;
 
 public class userinfoDao {
-	private userinfoDao() {
-		
-	}
-	private static userinfoDao instance =new userinfoDao();
-	
-	
-	public static userinfoDao getInstance() { // protected사용가능 ???????
-		return instance;
-	}
-
-
 	public int insert(Connection conn, userinfo userinfo) throws SQLException {
 		PreparedStatement pstmt = null;
 		String sql="insert into userinfo values(?,?,?,?,?,?,?,?)";

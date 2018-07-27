@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import DAO.userinfoDao;
 
 import jdbc.JdbcUtil;
@@ -11,21 +13,14 @@ import jdbc.connection.ConnectionProvider;
 import BeanModel.userinfo;
 
 public class GetUserService {
-	
-	private GetUserService() {}
-	
-	private static GetUserService instance = new GetUserService();
-	
-	public static GetUserService getInstance() {
-		return instance;
-	}
+	@Autowired
+	userinfoDao userinfodao;
 	
 	public List<userinfo> getUser() throws ServiceException {
 		Connection conn=null;
 		List<userinfo> userinfolist=null;
 		try {
 		conn = ConnectionProvider.getConnection();
-		userinfoDao userinfodao=userinfoDao.getInstance();
 		userinfolist=userinfodao.selectUser(conn);
 		return userinfolist;
 		} catch (SQLException e) {
@@ -40,7 +35,6 @@ public class GetUserService {
 		String userName="";
 		try {
 		conn = ConnectionProvider.getConnection();
-		userinfoDao userinfodao=userinfoDao.getInstance();
 		userName=userinfodao.selectUserName(conn,id);
 		
 		return userName;

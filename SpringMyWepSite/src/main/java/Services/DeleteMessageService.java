@@ -3,19 +3,16 @@ package Services;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import DAO.MessageDao;
-import member.Message;
+import BeanModel.Message;
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
 
 public class DeleteMessageService {
-	private static DeleteMessageService instance = new DeleteMessageService();
-
-	public static DeleteMessageService getInstance() {
-		return instance;
-	}
-
-	private DeleteMessageService() {}
+	@Autowired
+	MessageDao messageDao;
 
 	public void deleteMessage(int messageId, String GuestName) throws ServiceException, InvalidMessagePassowrdException,
 			MessageNotFoundException{
@@ -24,7 +21,7 @@ public class DeleteMessageService {
 		try {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
-			MessageDao messageDao = MessageDao.getInstance();
+			
 			//1.메세지검색
 			String guestName = messageDao.select(conn, messageId);
 			
