@@ -1,4 +1,4 @@
-package member;
+package BeanModel;
 
 public class emp_info {
 	private int empno=0;

@@ -29,7 +29,7 @@ public class LoginController {
 	@RequestMapping("/LoginAccess")
 	public String LoginAction(MemberInfo info, HttpSession session) throws ServiceException {
         String id=info.getId();
-        String pw=info.getPassword();
+        String pw=info.getPassword();        
         String DBpw=getIdService.findPw(id);		
 		if(pw.equals(DBpw)) {
 		session.setAttribute("id",info.getId());

@@ -1,4 +1,4 @@
-package member;
+package BeanModel;
 
 import java.util.List;
 

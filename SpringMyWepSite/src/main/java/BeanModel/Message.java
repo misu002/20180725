@@ -1,4 +1,4 @@
-package member;
+package BeanModel;
 
 public class Message {
 	

@@ -194,11 +194,7 @@
                 You can also contact us by phone 00553123-2323 or email catering@catering.com, or you can send us a message here:
             </p>
         </div>
-
     </div>
-
-
-
 </body>
 
 </html>
