@@ -17,6 +17,9 @@
 	<!-- css폴더등록하기위해서  /css 요청이 들어오면 /css/안에 있는 자원에 직접 접근하겠다, 자원으로 사용하겠다-->
 	<resources mapping="/css/**" location="/css/" />
 
+
+
+
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
