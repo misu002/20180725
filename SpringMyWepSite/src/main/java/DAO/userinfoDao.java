@@ -13,7 +13,7 @@ import BeanModel.MemberInfo;
 import BeanModel.userinfo;
 import Services.ServiceException;
 import jdbc.JdbcUtil;
-import member.userinfo;
+import BeanModel.userinfo;
 
 public class userinfoDao {
 	private userinfoDao() {

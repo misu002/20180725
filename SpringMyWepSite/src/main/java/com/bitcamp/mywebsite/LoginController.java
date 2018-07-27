@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import BeanModel.MemberInfo;
+import Services.GetIdService;
+import Services.ServiceException;
 
 
 @Controller
@@ -21,17 +23,17 @@ public class LoginController {
 		return mav;
 	}
 	@RequestMapping("/LoginAccess")
-	public String LoginAction(MemberInfo info, 
-			HttpServletRequest request,
-			@RequestParam("id") String id,
-			@RequestParam("password") String pw,
-			HttpSession session) {
-		String userid=request.getParameter("id");
-		String userpw=request.getParameter("password");	
-		System.out.println("Annotation : "+id+" - "+pw);
-		System.out.println("HttpServlet : "+userid+" - "+userpw);
-		System.out.println(info);
-		session.setAttribute("id",id);
+	public String LoginAction(MemberInfo info, HttpSession session) throws ServiceException {
+        GetIdService getIdService=GetIdService.getInstance();
+        String id=info.getId();
+        String pw=info.getPassword();
+        String DBpw=getIdService.findPw(id);    
+		
+		if(pw.equals(DBpw)) {
+		session.setAttribute("id",info.getId());
+		}else {
+			
+		}
 		return "index";
 	}
 	
